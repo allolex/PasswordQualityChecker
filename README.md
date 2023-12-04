@@ -1,24 +1,21 @@
-# README
+# PasswordQA 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+`make install`
 
-* Ruby version
+You will need current Ruby and Nodejs installed on your system. See [`.tool-versions` (link)](./.tool-versions).
 
-* System dependencies
+### Environment
 
-* Configuration
+`API_TOKEN` must be defined. I'm using [direnv][DIRENV] locally to load the key for use by both the frontend and backend
+apps. In production, this would be loaded from a secrets store, e.g. [Kubernetes secrets][K8S_SECRETS].
 
-* Database creation
+## Testing
 
-* Database initialization
+Run the specs with `bin/rails spec`.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+[DIRENV]: https://direnv.net
+[K8S_SECRETS]: https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data
 
-* Deployment instructions
-
-* ...
