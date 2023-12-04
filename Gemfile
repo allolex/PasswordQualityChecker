@@ -14,6 +14,10 @@ gem "puma", ">= 5.0"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
+# A "password strength estimator inspired by password crackers"
+# See https://github.com/formigarafa/zxcvbn-rb
+gem "zxcvbn", "~> 0.1.10"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
@@ -26,4 +30,3 @@ end
 group :development do
   gem "rufo"
 end
-

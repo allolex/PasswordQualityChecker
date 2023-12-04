@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  post "password_qa", action: :check, controller: "password_qa", as: :password_check
 end
