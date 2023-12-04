@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Token, type: :model do
   let(:token_text) { "Bearer FOO" }
@@ -17,7 +17,7 @@ describe Token, type: :model do
       described_class.new token_text
     end
 
-    context 'with a good value' do
+    context "with a good value" do
       it { is_expected.to be_a Token }
     end
 
@@ -25,7 +25,7 @@ describe Token, type: :model do
       let(:token_text) { "FOO" }
 
       it "raises an error" do
-        expect{ subject }.to raise_error(ArgumentError, /Bearer authentication/)
+        expect { subject }.to raise_error(ArgumentError, /Bearer authentication/)
       end
     end
 
@@ -33,7 +33,7 @@ describe Token, type: :model do
       let(:token_text) { "Token FOO" }
 
       it "raises an error" do
-        expect{ subject }.to raise_error(ArgumentError, /Bearer authentication/)
+        expect { subject }.to raise_error(ArgumentError, /Bearer authentication/)
       end
     end
   end
@@ -44,13 +44,12 @@ describe Token, type: :model do
     end
 
     context "with a matching token" do
-      it { is_expected.to eq false}
+      it { is_expected.to eq false }
     end
 
     context "with a non-matching token" do
       let(:token_text) { "Bearer this_does_not_match" }
-      it { is_expected.to eq false}
+      it { is_expected.to eq false }
     end
-
   end
 end

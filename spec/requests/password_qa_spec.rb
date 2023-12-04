@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "PasswordQA", type: :request do
   let(:valid_api_token) { "FOO" }
@@ -57,4 +57,3 @@ RSpec.describe "PasswordQA", type: :request do
     end
   end
 end
-
