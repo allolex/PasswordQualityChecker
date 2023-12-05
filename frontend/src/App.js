@@ -16,6 +16,8 @@ export default function App() {
                 "password-backend-validation",
                 "Weak password",
                 async (password, ctx) => {
+                    if (!password) { return false }
+
                     const {data: {passed_qa, errors}} = await axios.post(
                         passwordCheckUrl,
                         {password: password},
