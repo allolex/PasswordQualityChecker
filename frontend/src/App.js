@@ -39,14 +39,13 @@ export default function App() {
     const {errors} = formState
 
     function onSubmit(data) {
-        // display form data on success
-        alert("SUCCESS!! :-)\n\n" + JSON.stringify(data, null, 4))
+        alert("Your password is strong!\n\n" + JSON.stringify(data, null, 4))
         return false
     }
 
     return (
         <div className="card m-3">
-            <h5 className="card-header">Password Quality Assurance (PasswordQA)</h5>
+            <h5 className="card-header">Now select a password</h5>
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
@@ -58,7 +57,7 @@ export default function App() {
                         </div>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary mr-1">Register</button>
+                        <button type="submit" className="btn btn-primary mr-1">Next</button>
                         <button type="button" onClick={() => reset()} className="btn btn-secondary">Reset</button>
                     </div>
                 </form>
