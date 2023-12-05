@@ -30,16 +30,11 @@ export default function App() {
 
                     return passed_qa
                 }
-            ),
-        confirmPassword: Yup.string()
-            .required("Password confirmation is required")
-            .oneOf([Yup.ref("password")], "Passwords must match")
-
+            )
     })
 
     const formOptions = {mode: "onChange", resolver: yupResolver(validationSchema)}
 
-    // get functions to build form with useForm() hook
     const {register, handleSubmit, reset, formState} = useForm(formOptions)
     const {errors} = formState
 
@@ -60,12 +55,6 @@ export default function App() {
                             <input name="password" type="password" {...register("password")}
                                 className={`form-control ${errors.password ? "is-invalid" : ""}`}/>
                             <div className="invalid-feedback">{errors.password?.message}</div>
-                        </div>
-                        <div className="form-group col">
-                            <label>Confirm Password</label>
-                            <input name="confirmPassword" type="password" {...register("confirmPassword")}
-                                className={`form-control ${errors.confirmPassword ? "is-invalid" : ""}`}/>
-                            <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
                         </div>
                     </div>
                     <div className="form-group">
