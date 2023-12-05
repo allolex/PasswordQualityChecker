@@ -1,0 +1,2 @@
+api: rails server --port 3005
+browser_build: cd frontend && npm run start
