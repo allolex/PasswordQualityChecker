@@ -24,14 +24,36 @@ RSpec.describe "PasswordQA", type: :request do
   end
 
   describe "GET /password_qa" do
-    context "with a valid payload" do
-      let(:request_params) { valid_params }
-      let(:request_headers) { valid_headers }
+    let(:request_params) { valid_params }
+    let(:request_headers) { valid_headers }
 
-      let(:make_request) do
-        post password_check_url, headers: request_headers, params: request_params
+    let(:make_request) do
+      post password_check_url, headers: request_headers, params: request_params
+    end
+
+    context "with a bad api token" do
+      let(:bad_token) { "Bearer this_is_a_bad_token" }
+
+      context "with a non-XHR request" do
+        let(:request_headers) { { "HTTP_AUTHORIZATION" => bad_token } }
+
+        it "returns a :forbidden status" do
+          make_request
+          expect(response).to have_http_status(:forbidden)
+        end
       end
 
+      context "with an XHR request" do
+        let(:request_headers) { { "HTTP_AUTHORIZATION" => bad_token } }
+
+        it "returns an :ok status" do
+          post password_check_url, xhr: true, headers: request_headers, params: request_params
+          expect(response).to have_http_status(:ok)
+        end
+      end
+    end
+
+    context "with a valid payload" do
       context "with a too-simple password" do
         it "returns :ok with passed_qa false and includes validation errors" do
           make_request
