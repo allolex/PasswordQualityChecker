@@ -15,11 +15,16 @@ export default function App() {
             .test(
                 "password-backend-validation",
                 "Weak password",
-                async (password) => {
-                    const {data: {passed_qa}} = await axios.post(
+                async (password, ctx) => {
+                    const {data: {passed_qa, errors}} = await axios.post(
                         passwordCheckUrl,
                         {password: password},
                     )
+
+                    if (errors) {
+                        const passwordErrors = "The password you have selected is too weak. " + errors.password.join("; ")
+                        return ctx.createError({ message: passwordErrors })
+                    }
 
                     return passed_qa
                 }
@@ -44,7 +49,7 @@ export default function App() {
 
     return (
         <div className="card m-3">
-            <h5 className="card-header">React Hook Form - Password and Confirm Password Match Validation</h5>
+            <h5 className="card-header">Password Quality Assurance (PasswordQA)</h5>
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
