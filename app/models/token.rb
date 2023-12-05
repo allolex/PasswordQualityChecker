@@ -2,7 +2,7 @@ class Token
   ENVIRONMENT_KEY = "API_TOKEN".freeze
   EXPECTED_TYPE = "Bearer".freeze
   BEARER_MISSING = "Must use Bearer authentication".freeze
-  HEADER_MISSING = "Header value is missing".freeze
+  HEADER_MISSING = "Token header value is missing".freeze
 
   def initialize(authorization_header_value)
     raise ArgumentError, HEADER_MISSING unless authorization_header_value.present?
